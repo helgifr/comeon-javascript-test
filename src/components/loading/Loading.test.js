@@ -17,7 +17,7 @@ describe('Loading Component', () => {
     jest.runAllTimers();
     expect(loading.getElement()).not.toBeNull();
   });
-  
+
   it('should clear timeout when unmounting', () => {
     loading.unmount();
     expect(clearTimeout).toHaveBeenCalledTimes(1);
