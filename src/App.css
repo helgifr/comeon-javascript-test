@@ -31,3 +31,7 @@
     transform: rotate(360deg);
   }
 }
+
+.cookieConsent button:hover {
+  background-color: #FF9800
+}

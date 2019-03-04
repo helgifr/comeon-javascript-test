@@ -1,24 +1,13 @@
-const baseurl = process.env.REACT_APP_SERVICE_URL;
-const publicUrl = process.env.PUBLIC_URL;
+const baseurl = 'http://localhost:3001';
 
-async function request(method, endpoint, data, file = false) {
+async function request(method, endpoint, data) {
   const url = `${baseurl}${endpoint}`;
 
   const options = { method, headers: {} };
 
-  if (data && !file) {
+  if (data) {
     options.body = JSON.stringify(data);
     options.headers['content-type'] =  'application/json';
-  }
-
-  if (data && file) {
-    options.body = data;
-  }
-
-  const token = window.localStorage.getItem('token');
-
-  if (token) {
-    options.headers['Authorization'] = `Bearer ${token}`;
   }
 
   let response;
@@ -42,13 +31,6 @@ async function request(method, endpoint, data, file = false) {
   }
 
   const result = await response.json();
-
-  if (response.status === 401 && result.error && token) {
-    window.localStorage.removeItem('token');
-    window.localStorage.removeItem('user');
-    window.location = `${publicUrl}/login?tokenExpired`;
-    throw Error('token expired');
-  }
 
   return {
     status: response.status,

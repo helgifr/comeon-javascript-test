@@ -4,8 +4,13 @@
   "private": true,
   "dependencies": {
     "react": "^16.8.3",
+    "react-cookie-consent": "^2.2.1",
     "react-dom": "^16.8.3",
-    "react-scripts": "2.1.5"
+    "react-redux": "^6.0.1",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "2.1.5",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -23,6 +28,10 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "@types/jest": "^24.0.9"
+    "async-wait-until": "^1.2.4",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.10.0",
+    "enzyme-to-json": "^3.3.5",
+    "redux-mock-store": "^1.5.3"
   }
 }

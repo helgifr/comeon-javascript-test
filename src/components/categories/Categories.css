@@ -1,0 +1,5 @@
+.ui.selection.animated.list.category.items > .clicked.category.item {
+  padding-left: 1em;
+  background: rgba(0, 0, 0, 0.03);
+  color: rgba(0, 0, 0, 0.8);
+}
