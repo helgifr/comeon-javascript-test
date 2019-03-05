@@ -1,5 +1,5 @@
 import api from '../api';
-import { removeLocalStore, setLocalStore } from '../util';
+import { removeLocalStore, setLocalStore, getLocalStore } from '../util';
 
 export const LOGIN_REQUEST = 'LOGIN_REQUEST';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
@@ -55,6 +55,7 @@ export const loginUser = (username, password) => {
 
     if (post.status === 200) {
       const { player } = post.result;
+      player.username = username;
       setLocalStore('player', player);
       dispatch(receiveLogin(player));
     }
@@ -63,6 +64,12 @@ export const loginUser = (username, password) => {
 
 export const logoutUser = () => {
   return async (dispatch) => {
+    const url = '/logout';
+    const { username } = getLocalStore('player')
+    const data = { username };
+
+    await api.post(url, data);
+
     removeLocalStore('player');
     dispatch(logout());
   }
