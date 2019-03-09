@@ -8,13 +8,14 @@ import Categories from '../../components/categories';
 import GamesList from '../../components/games-list';
 import Search from '../../components/search';
 
-import { getLocalStore } from '../../util';
+import { getLocalStore, escapeRegExp } from '../../util';
 
 class Games extends Component {
   state = {
     loading: true,
     filterGames: '',
-    categoryFilter: 0
+    categoryFilter: 0,
+    searchFilter: '',
   };
 
   componentDidMount() {
@@ -70,7 +71,7 @@ class Games extends Component {
     if (loading) return (<Loading />);
 
     // filter games based on search and category
-    const nameFilter = new RegExp(searchFilter, 'ig');
+    const nameFilter = new RegExp(escapeRegExp(searchFilter), 'ig');
     const filteredGames = games
       .filter(({ name, categoryIds }) =>
         name.match(nameFilter) && categoryIds.includes(categoryFilter)
