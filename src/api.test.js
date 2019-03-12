@@ -32,7 +32,7 @@ describe('API functions', () => {
     const url = '/logout';
     const data = { username: 'rebecka' };
     const { result } = await api.post(url, data);
-    expect(result.status).toBe('success');
+    expect(result.status).toEqual('success');
   });
 
   it('should return the list of categories that contain "id" and "name"', async () => {
